@@ -4,17 +4,17 @@ version = "0.1.0"
 authors = ["ubuntu"]
 edition = "2018"
 
-[package.metadata.ssvmup.profile.release]
-wasm-opt = ['-O4']
-
 [lib]
 name = "ssvm_nodejs_starter_lib"
 path = "src/lib.rs"
 crate-type =["cdylib"]
 
 [dependencies]
-num-integer = "0.1"
-sha3 = "0.8.2"
-serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0"
 wasm-bindgen = "=0.2.61"
+tera = "1.2.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "=1.0.44"
+rkm = { path = "deps/rkm" }
+ndarray = { version = "0.13.0", features = ["serde"] }
+rand = "0.7.3"
+csv = "1.1.3"
