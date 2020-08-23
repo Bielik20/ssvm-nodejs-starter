@@ -35,12 +35,12 @@
     <script>
       $(function () {
         var options = {
-          target: '#svg_img',
-          url: '/draw',
+          target: '#result',
+          url: '/report',
           type: 'post',
           success: enableButton,
         };
-        $('#draw').ajaxForm(options);
+        $('#report').ajaxForm(options);
       });
 
       function enableButton(responseText, statusText, xhr, $form) {
@@ -57,7 +57,7 @@
         <li>Demo data: <a href="demo.data.json">download JSON file</a></li>
       </ul>
 
-      <form id="draw" enctype="multipart/form-data">
+      <form id="report" enctype="multipart/form-data">
         <div class="form-group">
           <label for="json_file">Please upload a JSON file with assignments data</label>
           <input type="file" class="form-control-file" id="json_file" name="json_file" />
@@ -70,6 +70,7 @@
             class="form-control"
             id="commission_rate"
             name="commission_rate"
+            step="0.01"
             value="0.1"
           />
         </div>
@@ -78,14 +79,14 @@
           type="submit"
           class="btn btn-primary mb-2"
           id="fitplot"
-          onclick="setTimeout(function(){$('#svg_img').text('Please wait. This could take a minute');$('#fitplot').prop('disabled', true);},0);return true;"
+          onclick="setTimeout(function(){$('#result').text('Please wait. This could take a minute');$('#fitplot').prop('disabled', true);},0);return true;"
         >
           Create Report
         </button>
       </form>
 
       <div class="jumbotron">
-        <p id="svg_img" class="lead">Upload a CSV data file and press the button above!</p>
+        <pre id="result">Upload a JSON data file and press the button above!</pre>
       </div>
     </div>
   </body>
