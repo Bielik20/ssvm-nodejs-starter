@@ -1,8 +1,7 @@
-const { fit_draw } = require('../pkg/ssvm_nodejs_starter_lib.js');
+const assignments = require('./public/demo.data.json');
+const { create_report } = require('../pkg/ssvm_nodejs_starter_lib.js');
 
-const fs = require('fs');
-
-console.log("iris cluster centers");
-var iris_csv = fs.readFileSync("iris.data.csv");
-var svg = fit_draw(iris_csv, 3, 800, 400, 50, "Demo");
-console.log(svg);
+console.time('time')
+const result = create_report(assignments, '0.1');
+console.timeEnd('time')
+console.log(JSON.parse(result));

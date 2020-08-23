@@ -1,0 +1,32 @@
+[
+  {
+    "extra_commission": 100.0,
+    "tax": 0.23,
+    "gross_price": 200.0
+  },
+  {
+    "extra_commission": 90.0,
+    "tax": 0.23,
+    "gross_price": 10.0
+  },
+  {
+    "extra_commission": 50.0,
+    "tax": 0.08,
+    "gross_price": 0.0
+  },
+  {
+    "extra_commission": 100.0,
+    "tax": 0.0,
+    "gross_price": 230.0
+  },
+  {
+    "extra_commission": 100.0,
+    "tax": 0.23,
+    "gross_price": 50.0
+  },
+  {
+    "extra_commission": 70.0,
+    "tax": 0.08,
+    "gross_price": 20.0
+  }
+]

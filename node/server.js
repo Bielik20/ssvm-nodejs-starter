@@ -1,6 +1,6 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
-const { fit_draw } = require('../pkg/ssvm_nodejs_starter_lib.js');
+const { create_report } = require('../pkg/ssvm_nodejs_starter_lib.js');
 
 const app = express();
 const port = 3000;
@@ -13,15 +13,19 @@ app.post('/draw', function (req, res) {
   if (!req.files || Object.keys(req.files).length === 0) {
     return res.status(400).send('No files were uploaded.');
   }
-  console.log ("Received " + req.files.csv_file.name + " with size: " + req.files.csv_file.size);
-  console.log ("Received " + req.body.num);
-  console.log ("Received " + req.body.title);
+  console.log ("Received " + req.files.json_file.name + " with size: " + req.files.json_file.size);
+  console.log ("Received " + req.body.commission_rate);
 
-  let csv_file = req.files.csv_file;
-  console.time(csv_file.name);
-  var svg = fit_draw(csv_file.data, parseInt(req.body.num), 800, 400, 50, req.body.title);
-  console.timeEnd(csv_file.name);
-  res.send(svg)
+  const json_file = req.files.json_file;
+  const assignments = JSON.parse(json_file.data.toString('ascii'));
+  const commission_rate = req.body.commission_rate.toString();
+
+  console.log(assignments, commission_rate);
+  console.time(json_file.name);
+  const result = create_report(assignments, commission_rate);
+  console.timeEnd(json_file.name);
+  console.log(result);
+  res.send(result);
 })
 
 app.listen(port, () => console.log(`Listening at http://localhost:${port}`))
